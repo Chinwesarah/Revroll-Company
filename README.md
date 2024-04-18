@@ -145,8 +145,8 @@ GROUP BY
 ORDER BY 
     num_points DESC;
 ```
-5. Write a query to find the fastest install time with its corresponding `derby_id` for each installer. 
-In case of a tie, you should find the install with the smallest `derby_id`.
+5. Find the fastest install time with its corresponding `derby_id` for each installer. 
+In case of a tie, find the install with the smallest `derby_id`.
 
 Return the result table ordered by `installer_id` in ascending order.
 
