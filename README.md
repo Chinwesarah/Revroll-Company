@@ -36,11 +36,7 @@ FROM
 WHERE 
     no_of_orders = (SELECT MAX(no_of_orders) FROM newtable);
 ```
-2. RevRoll does not install every part that is purchased. 
-Some customers prefer to install parts themselves. 
-This is a valuable line of business 
-RevRoll wants to encourage this by finding valuable self-install customers and sending them offers.
-Return the customer_id and preferred name of customers who have made at least $2000 of purchases in parts that RevRoll did not install. 
+2. RevRoll does not install every part that is purchased. Some customers prefer to install parts themselves. Return the `customer_id` and `preferred name` of customers who have made at least $2000 of purchases in parts that RevRoll did not install. 
 Expected column names: `customer_id`, `preferred_name`
 
 ```sql
@@ -64,7 +60,8 @@ HAVING
 		SUM(parts.price * orders.quantity) >= 2000;
 ```
 3.Report the id and preferred name of customers who bought an Oil Filter and Engine Oil 
-but did not buy an Air Filter, Return the result table ordered by `customer_id`
+but did not buy an Air Filter, so as to recommend to these customers to buy an Air Filter.
+Return the result table ordered by `customer_id`
 ```sql
 SELECT DISTINCT
 	customers.customer_id, 
@@ -182,6 +179,15 @@ FROM
     rank_table
 WHERE 
     rank = 1;
+```
+#### Note: Kindly refer to the attached SQL file for more questions and answers.
 
+## Results and Recommendations
+1. Customer(s) with the most orders can be given exclusive discounts and loyalty rewards,their feedbacks could also be sought so that there is a better understanding of what aspect of the business( products or servcies) appeals to them.
+
+2. By finding out how many of their customers prefer to self install the parts they purchased, the management team could decide to offer them DIY installation kits and comprehensive guides for those parts. This will encourage even more customers to self install and potentially increase sales.
+
+3. Installers with the highest scores and fastest install times can be acknowledged for their skills and contributions. This will help to boost morale and motivation among installers.
+installers who also need additional training or support can be identified as well and training programs and workshops could be organized to assist thenm in other to improve  their skills and efficiency in installations.
 
 
