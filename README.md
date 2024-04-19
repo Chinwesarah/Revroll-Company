@@ -9,7 +9,7 @@ Please refer to the attached Microsoft Word document for the Entity Relationship
 
 ## Tools
 - Postgres SQL - Used for data analysis
-- Tableau - Data Visualization and storytelling
+- Tableau - Used for data visualization 
 ## Data Analysis
 The following questions were answered using POSTGRESQL to provide useful insights on Revroll customers and staff(installers)
 
@@ -38,7 +38,7 @@ GROUP BY
 	installers.name;
 ```
 
-1. Write a query to find the customer(s) with the most orders.   
+2. Write a query to find the customer(s) with the most orders.   
 Expected column name(s): `preferred_name`
 ```sql
 WITH newtable AS (
@@ -62,7 +62,7 @@ FROM
 WHERE 
     no_of_orders = (SELECT MAX(no_of_orders) FROM newtable);
 ```
-2. RevRoll does not install every part that is purchased. Some customers prefer to install parts themselves. Return the `customer_id` and `preferred name` of customers who have made at least $2000 of purchases in parts that RevRoll did not install. 
+3. RevRoll does not install every part that is purchased. Some customers prefer to install parts themselves. Return the `customer_id` and `preferred name` of customers who have made at least $2000 of purchases in parts that RevRoll did not install. 
 Expected column names: `customer_id`, `preferred_name`
 
 ```sql
@@ -85,7 +85,7 @@ GROUP BY
 HAVING 
 		SUM(parts.price * orders.quantity) >= 2000;
 ```
-3.Report the id and preferred name of customers who bought an Oil Filter and Engine Oil 
+4.Report the id and preferred name of customers who bought an Oil Filter and Engine Oil 
 but did not buy an Air Filter, so as to recommend to these customers to buy an Air Filter.
 Return the result table ordered by `customer_id`
 ```sql
@@ -104,7 +104,7 @@ and customers.customer_id IN (SELECT customer_id FROM orders WHERE part_id = 2)
 and customers.customer_id NOT IN (SELECT customer_id FROM orders WHERE part_id = 3)
 order by customers.customer_id;
 ```
-4.RevRoll encourages healthy competition. The company holds an Install Derby where installers face off to see who can change a part the fastest in a tournament style contest.
+5.RevRoll encourages healthy competition. The company holds an Install Derby where installers face off to see who can change a part the fastest in a tournament style contest.
 
 Derby points are awarded as follows:
 
@@ -168,7 +168,7 @@ GROUP BY
 ORDER BY 
     num_points DESC;
 ```
-5. Find the fastest install time with its corresponding `derby_id` for each installer. 
+6. Find the fastest install time with its corresponding `derby_id` for each installer. 
 In case of a tie, find the install with the smallest `derby_id`.
 
 Return the result table ordered by `installer_id` in ascending order.
