@@ -12,6 +12,32 @@ Please refer to the attached Microsoft Word document for the Entity Relationship
 - Tableau - Data Visualization and storytelling
 ## Data Analysis
 The following questions were answered using POSTGRESQL to provide useful insights on Revroll customers and staff(installers)
+
+1. what is the relationship between the number of installations and the total value of parts installed?
+*first I write a query to find the total number of installs, and total value of installs grouped by installer
+*Then I rank installers based on their values in the fields above. where bigger values have higher rank
+*Finally, I visualize the data above in tableau (rank or actual values)
+```sql
+SELECT 
+	installers.name, 
+   	COUNT(install_id) AS no_of_installation, 
+    	SUM(quantity*price) AS total_value_of_parts_installed, 
+	RANK() OVER (ORDER BY COUNT(install_id) DESC) AS total_installation_rank, 
+    	RANK() OVER (ORDER BY SUM(quantity*price) DESC) AS total_value_rank
+
+FROM 
+	installs
+JOIN 
+	orders ON installs.order_id = orders.order_id
+JOIN 
+	parts ON orders.part_id = parts.part_id
+JOIN
+	installers ON installers.installer_id = installs.installer_id
+		
+GROUP BY
+	installers.name;
+```
+
 1. Write a query to find the customer(s) with the most orders.   
 Expected column name(s): `preferred_name`
 ```sql
