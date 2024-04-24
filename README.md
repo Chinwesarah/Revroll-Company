@@ -9,15 +9,15 @@ Please refer to the attached Microsoft Word document for the Entity Relationship
 
 ## Tools
 - Postgres SQL - Used for data analysis
-- Tableau - Used for data visualization 
+- Tableau - Used for data visualization
+- Microsoft Excel - To calculate the pearson correlation coeficient to determine the strength of the linear relationship between the number of installations and the total value of parts installed by each installer
 ## Data Analysis
 The following questions were answered using POSTGRESQL to provide useful insights on Revroll customers and staff(installers)
 
-1. what is the relationship between the number of installations and the total value of parts installed?
+1. what is the relationship between the number of installations and the total value of parts installed by each installer?
 *first, write a query to find the total number of installs, and total value of installs grouped by installer
-*Then, rank installers based on their values in the fields above. where bigger values have higher rank
-*Finally, visualize the data above in tableau (rank or actual values).(see attached file)
-*I also calculated the pearson correlation coeficient to determine the strength of association between the variables of interest.(see attached file)
+*Then visualize the data above in tableau (see attached file)
+*Finally, calculate the pearson correlation coeficient to determine the strength of association between the variables of interest.(see attached file)
 
 ```sql
 SELECT 
