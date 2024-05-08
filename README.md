@@ -19,8 +19,8 @@ The following questions were answered using POSTGRESQL to provide useful insight
 
 1. what is the relationship between the number of installations and the total value of parts installed by each installer?
 *first, write a query to find the total number of installs, and total value of installs grouped by installer
-*Then visualize the data above in tableau (see attached file)
-*Finally, calculate the pearson correlation coeficient to determine the strength of association between the variables of interest.(see attached file)
+*Then visualize the data above in tableau
+*Finally, calculate the pearson correlation coeficient to determine the strength of association between the variables of interest
 
 ```sql
 SELECT 
