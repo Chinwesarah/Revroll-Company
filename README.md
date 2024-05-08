@@ -6,11 +6,13 @@ This data analysis project is aimed at assisting the RevRoll's management team t
 
 ## Data Sources
 Please refer to the attached Microsoft Word document for the Entity Relationship Diagram and Data Dictionary
+Pearson correlation coeficient calculation: https://docs.google.com/spreadsheets/d/1A3QI3Wc6DvReGsapNpEUFpWV5KhgV6ak_TxSndpZ1dg/edit?usp=drive_link
+
 
 ## Tools
 - Postgres SQL - Used for data analysis
 - Tableau - Used for data visualization
-- Microsoft Excel - To calculate the pearson correlation coeficient to determine the strength of the linear relationship between the number of installations and the total value of parts installed by each installer
+- Google spreadsheet - To calculate the pearson correlation coeficient to determine the strength of the linear relationship between the number of installations and the total value of parts installed by each installer
 ## Data Analysis
 The following questions were answered using POSTGRESQL to provide useful insights on Revroll customers and staff(installers)
 
