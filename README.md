@@ -5,8 +5,9 @@ Revroll Company is an auto parts dealer and installer.
 This data analysis project is aimed at assisting the RevRoll's management team to have a better knowledge of their customers' behavior and preferences and to analyse Employees' Performance in other to optimize their operations and improve overall business performance.
 
 ## Data Sources
-Please refer to the attached Microsoft Word document for the Entity Relationship Diagram and Data Dictionary
-Pearson correlation coeficient calculation: https://docs.google.com/spreadsheets/d/1A3QI3Wc6DvReGsapNpEUFpWV5KhgV6ak_TxSndpZ1dg/edit?usp=drive_link
+1. Please refer to the attached Microsoft Word document for the Entity Relationship Diagram and Data Dictionary
+2. Pearson correlation coeficient calculation: https://docs.google.com/spreadsheets/d/1A3QI3Wc6DvReGsapNpEUFpWV5KhgV6ak_TxSndpZ1dg/edit?usp=drive_link
+3. Tableau visualization: https://public.tableau.com/views/No_ofinstallationsVs_Totalvalueofpartsinstalledperinstaller/Sheet1?:language=en-GB&publish=yes&:sid=&:display_count=n&:origin=viz_share_link
 
 
 ## Tools
