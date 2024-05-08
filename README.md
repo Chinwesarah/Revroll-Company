@@ -211,11 +211,13 @@ WHERE
 #### Note: Kindly refer to the attached SQL file for more questions and answers.
 
 ## Results and Recommendations
-1. Customer(s) with the most orders can be given exclusive discounts and loyalty rewards,their feedbacks could also be sought so that there is a better understanding of what aspect of the business( products or servcies) appeals to them.
+1. The Pearson correlation coefficient for the relationship between the number of installations and the total value of parts installed by each installer is **0.3** which indicates a low positive relationship.
 
-2. By finding out how many of their customers prefer to self install the parts they purchased, the management team could decide to offer them DIY installation kits and comprehensive guides for those parts. This will encourage even more customers to self install and potentially increase sales.
+2. Customer(s) with the most orders can be given exclusive discounts and loyalty rewards,their feedbacks could also be sought so that there is a better understanding of what aspect of the business( products or servcies) appeals to them.
 
-3. Installers with the highest scores and fastest install times can be acknowledged for their skills and contributions. This will help to boost morale and motivation among installers.
+3. By finding out how many of their customers prefer to self install the parts they purchased, the management team could decide to offer them DIY installation kits and comprehensive guides for those parts. This will encourage even more customers to self install and potentially increase sales.
+
+4. Installers with the highest scores and fastest install times can be acknowledged for their skills and contributions. This will help to boost morale and motivation among installers.
 installers who also need additional training or support can be identified as well and training programs and workshops could be organized to assist thenm in other to improve  their skills and efficiency in installations.
 
 
