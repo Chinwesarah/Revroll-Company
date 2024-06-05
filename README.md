@@ -2,7 +2,7 @@
 
 ## Project Overview
 Revroll Company is an auto parts dealer and installer.
-This data analysis project is aimed at assisting the RevRoll's management team to have a better knowledge of their customers' behavior and preferences and to analyse Employees' Performance in other to optimize their operations and improve overall business performance.
+This data analysis project is aimed at assisting the RevRoll's management team to have a better knowledge of their customers' behavior and preferences and to analyse employees' performance in other to optimize their operations and improve overall business performance.
 
 ## Data Sources
 1. Please refer to the attached Microsoft Word document for the Entity Relationship Diagram and Data Dictionary
@@ -14,6 +14,7 @@ This data analysis project is aimed at assisting the RevRoll's management team t
 - Postgres SQL - Used for data analysis
 - Tableau - Used for data visualization
 - Google spreadsheet - To calculate the pearson correlation coeficient to determine the strength of the linear relationship between the number of installations and the total value of parts installed by each installer
+  
 ## Data Analysis
 The following questions were answered using POSTGRESQL to provide useful insights on Revroll customers and staff(installers)
 
