@@ -19,7 +19,7 @@ This data analysis project is aimed at assisting the RevRoll's management team t
 ## Data Analysis
 The following questions were answered using POSTGRESQL to provide useful insights on Revroll customers and staff(installers)
 
-1. what is the relationship between the number of installations and the total value of parts installed by each installer?
+**Question 1.** what is the relationship between the number of installations and the total value of parts installed by each installer?
 
 *first, write a query to find the total number of installs, and total value of installs grouped by installer
 *Then visualize the data above in tableau
@@ -48,7 +48,7 @@ GROUP BY
 	installers.name;
 ```
 
-2. Write a query to find the customer(s) with the most orders.   
+**Question 2.** Write a query to find the customer(s) with the most orders.   
 Expected column name(s): `preferred_name`
 
 **Query Explanation:**  
@@ -81,7 +81,7 @@ FROM
 WHERE 
     no_of_orders = (SELECT MAX(no_of_orders) FROM newtable);
 ```
-3. RevRoll does not install every part that is purchased. Some customers prefer to install parts themselves. Return the `customer_id` and `preferred name` of customers who have made at least $2000 of purchases in parts that RevRoll did not install. 
+**Question 3.** RevRoll does not install every part that is purchased. Some customers prefer to install parts themselves. Return the `customer_id` and `preferred name` of customers who have made at least $2000 of purchases in parts that RevRoll did not install. 
 Expected column names: `customer_id`, `preferred_name`  
 
 **Query Explanation:**  
@@ -111,9 +111,16 @@ GROUP BY
 HAVING 
 		SUM(parts.price * orders.quantity) >= 2000;
 ```
-4.Report the id and preferred name of customers who bought an Oil Filter and Engine Oil 
+**Question 4.** Report the id and preferred name of customers who bought an Oil Filter and Engine Oil 
 but did not buy an Air Filter, so as to recommend to these customers to buy an Air Filter.
-Return the result table ordered by `customer_id`
+Return the result table ordered by `customer_id`  
+
+**Query Explanation:**  
+1. The query selects customer_id and preferred_name from the customers table and JOINS the orders table on customer_id
+2. In the WHERE clause, each subquery filters customers that purchased or did not purchase the part with the part_id listed, this is achieved using the IN and NOT IN operators
+3. The AND operator in the WHERE clause is used so that only customers that meet all three conditions are returned.
+4. The results are then ordered by customer_id.
+
 ```sql
 SELECT DISTINCT
 	customers.customer_id, 
@@ -130,7 +137,7 @@ and customers.customer_id IN (SELECT customer_id FROM orders WHERE part_id = 2)
 and customers.customer_id NOT IN (SELECT customer_id FROM orders WHERE part_id = 3)
 order by customers.customer_id;
 ```
-5.RevRoll encourages healthy competition. The company holds an Install Derby where installers face off to see who can change a part the fastest in a tournament style contest.
+**Question 5.** RevRoll encourages healthy competition. The company holds an Install Derby where installers face off to see who can change a part the fastest in a tournament style contest.
 
 Derby points are awarded as follows:
 
@@ -140,7 +147,16 @@ Derby points are awarded as follows:
 
 We need to calculate the scores of all installers after all matches. Return the result table ordered by `num_points` in decreasing order. 
 In case of a tie, order the records by installer_id in increasing order.
-Expected column names: `installer_id`, `name`, `num_points`
+Expected column names: `installer_id`, `name`, `num_points`  
+
+**Query Explanation:**  
+1. The first CTE (score_table) selects columns installer_one_id,installer_two_id (the 2 installers involved in each competition)
+2. 2 CASE statement s are used to create 2 additional columns (installer_one_score and installer_two_score columns) which are the scores awarded to each installer in a competition
+3. The second CTE (stack_column) selects installer_one_id and  installer_one_score from the score_table and uses the UNION ALL operator to combine scores from both installer_one_id and installer_two_id into a single column format.
+4. The final query joins the stack_column table with the installers table to map installer IDs to their names. It then calculates the total score (num_points) for each installer by summing their points from stack_column_table.
+5. The COALESCE function ensures that installers with no scores are assigned 0 points.
+6. The results are grouped by installer ID and name, then ordered by total points in descending order.
+   
 ```sql
 WITH score_table AS (
     SELECT 
@@ -194,7 +210,7 @@ GROUP BY
 ORDER BY 
     num_points DESC;
 ```
-6. Find the fastest install time with its corresponding `derby_id` for each installer. 
+**Question 6.** Find the fastest install time with its corresponding `derby_id` for each installer. 
 In case of a tie, find the install with the smallest `derby_id`.
 
 Return the result table ordered by `installer_id` in ascending order.
