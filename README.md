@@ -82,7 +82,14 @@ WHERE
     no_of_orders = (SELECT MAX(no_of_orders) FROM newtable);
 ```
 3. RevRoll does not install every part that is purchased. Some customers prefer to install parts themselves. Return the `customer_id` and `preferred name` of customers who have made at least $2000 of purchases in parts that RevRoll did not install. 
-Expected column names: `customer_id`, `preferred_name`
+Expected column names: `customer_id`, `preferred_name`  
+
+**Query Explanation:**  
+1. The query selects customer_id and preferred_name from the customers table
+2. The query uses multiple LEFT JOIN operations to combine data from the customers, orders, parts, and installs tables
+3. the WHERE clause filters out customers that haven't had any installation (as indicated by installs.order_id IS NULL).
+4. The HAVING clause filters out customers that have made less than $2000 of purchase (as indicated by SUM(parts.price * orders.quantity) >= 2000)
+5. Results are grouped by customer_id and preferred_name
 
 ```sql
 SELECT 
