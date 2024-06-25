@@ -1,7 +1,7 @@
 # Revroll-Company
+Revroll Company is an auto parts dealer and installer. 
 
 ## Project Overview
-Revroll Company is an auto parts dealer and installer.
 This data analysis project is aimed at assisting the RevRoll's management team to have a better knowledge of their customers' behavior and preferences and to analyse employees' performance in other to optimize their operations and improve overall business performance.
 
 ## Data Sources
