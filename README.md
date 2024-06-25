@@ -49,10 +49,15 @@ GROUP BY
 
 2. Write a query to find the customer(s) with the most orders.   
 Expected column name(s): `preferred_name`
-Query Explanation:
+
+**Query Explanation:**  
 1. The CTE(Newtable) created selects customer_id, no_of_orders(derived from The count of orders placed by each customer) and preferred_name for each customer.
 2. The orders table is joined with the customers table using LEFT JOIN to get the necessary data.
 3. The LEFT JOIN ensures that all customers are included, even those with zero orders.
+4. Results are then grouped by customer Id and preferred_name, so that the aggregated column (no_of_orders) will be applied to each customer.
+5. From the CTE (newtable) created, the preferred_name is then selected and a WHERE clause is used to filter customer(s) with the highest number of orders.
+6. A subquery is used to enable the use of an aggregate function (MAX), since we cannot directly use an aggregate function with a WHERE clause.
+   
 ```sql
 WITH newtable AS (
     SELECT 
