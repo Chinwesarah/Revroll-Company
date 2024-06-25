@@ -19,18 +19,21 @@ This data analysis project is aimed at assisting the RevRoll's management team t
 The following questions were answered using POSTGRESQL to provide useful insights on Revroll customers and staff(installers)
 
 1. what is the relationship between the number of installations and the total value of parts installed by each installer?
+
 *first, write a query to find the total number of installs, and total value of installs grouped by installer
 *Then visualize the data above in tableau
-*Finally, calculate the pearson correlation coeficient to determine the strength of association between the variables of interest
+*Finally, calculate the pearson correlation coeficient to determine the strength of association between the variables of interest  
+
+**Query explanation:**  
+1. The query selects the name of the installers, the count of installation IDs, and a new column which is the total value of parts installed (this is calculated by multiplying the quantity of parts by their price and summing up the resul)
+2. The installs, orders, parts and installers tables are joined to fetch the necessary data
+3. Finally, the result is grouped by installers name, which means the aggregate functions (COUNT and SUM) will be applied for each installer individually.
 
 ```sql
 SELECT 
 	installers.name, 
    	COUNT(install_id) AS no_of_installation, 
-    	SUM(quantity*price) AS total_value_of_parts_installed, 
-	RANK() OVER (ORDER BY COUNT(install_id) DESC) AS total_installation_rank, 
-    	RANK() OVER (ORDER BY SUM(quantity*price) DESC) AS total_value_rank
-
+    	SUM(quantity*price) AS total_value_of_parts_installed
 FROM 
 	installs
 JOIN 
@@ -46,6 +49,10 @@ GROUP BY
 
 2. Write a query to find the customer(s) with the most orders.   
 Expected column name(s): `preferred_name`
+Query Explanation:
+1. The CTE(Newtable) created selects customer_id, no_of_orders(derived from The count of orders placed by each customer) and preferred_name for each customer.
+2. The orders table is joined with the customers table using LEFT JOIN to get the necessary data.
+3. The LEFT JOIN ensures that all customers are included, even those with zero orders.
 ```sql
 WITH newtable AS (
     SELECT 
