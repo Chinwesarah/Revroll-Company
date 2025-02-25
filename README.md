@@ -154,7 +154,7 @@ Expected column names: `installer_id`, `name`, `num_points`
 2. 2 CASE statements are used to create 2 additional columns (installer_one_score and installer_two_score columns) which are the scores awarded to each installer in a competition
 3. The second CTE (stack_column) selects installer_one_id and  installer_one_score from the score_table and uses the UNION ALL operator to combine scores from both installer_one_id and installer_two_id into a single column format.
 4. The final query joins the stack_column table with the installers table to map installer IDs to their names. It then calculates the total score (num_points) for each installer by summing their points from stack_column_table.
-5. The COALESCE function ensures that installers with no scores are assigned 0 points.
+5. The COALESCE function ensures that installer(s) with no scores(did not participate in the competion and therefore not included in the install_derby table but are on the table that has the names of all installers, that is the installers table) are assigned 0 points.
 6. The results are grouped by installer ID and name, then ordered by total points in descending order.
    
 ```sql
