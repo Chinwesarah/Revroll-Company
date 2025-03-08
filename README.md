@@ -164,19 +164,13 @@ WITH score_table AS (
         installer_two_id,
         CASE 
             WHEN installer_one_time < installer_two_time THEN 3 
-            ELSE 
-                CASE 
-                    WHEN installer_one_time = installer_two_time THEN 1 
-                    ELSE 0 
-                END 
+            WHEN installer_one_time = installer_two_time THEN 1 
+            ELSE 0 
         END AS installer_one_score,
         CASE 
             WHEN installer_two_time < installer_one_time THEN 3 
-            ELSE 
-                CASE 
-                    WHEN installer_one_time = installer_two_time THEN 1 
-                    ELSE 0 
-                END 
+            WHEN installer_one_time = installer_two_time THEN 1 
+            ELSE 0 
         END AS installer_two_score
     FROM 
         install_derby
