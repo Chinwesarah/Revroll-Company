@@ -175,7 +175,6 @@ WITH score_table AS (
     FROM 
         install_derby
 ),
-
 stack_column_table AS (
     SELECT 
         installer_one_id AS installer_id, 
@@ -189,7 +188,6 @@ stack_column_table AS (
     FROM 
         score_table
 )
-
 SELECT 
     installers.installer_id,
     "name", 
